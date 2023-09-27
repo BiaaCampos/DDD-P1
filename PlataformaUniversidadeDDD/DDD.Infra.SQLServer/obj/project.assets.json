@@ -3532,11 +3532,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj",
+      "projectUniqueName": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj",
       "projectName": "DDD.Infra.SQLServer",
-      "projectPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj",
+      "projectPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj",
       "packagesPath": "C:\\Users\\Aula\\.nuget\\packages\\",
-      "outputPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\obj\\",
+      "outputPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3557,8 +3557,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Domain\\DDD.Domain.csproj": {
-              "projectPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Domain\\DDD.Domain.csproj"
+            "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Domain\\DDD.Domain.csproj": {
+              "projectPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Domain\\DDD.Domain.csproj"
             }
           }
         }

@@ -3776,11 +3776,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
+      "projectUniqueName": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
       "projectName": "DDD.Application.Api",
-      "projectPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
+      "projectPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
       "packagesPath": "C:\\Users\\Aula\\.nuget\\packages\\",
-      "outputPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Application.Api\\obj\\",
+      "outputPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Application.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3802,11 +3802,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.MemoryDb\\DDD.Infra.MemoryDb.csproj": {
-              "projectPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.MemoryDb\\DDD.Infra.MemoryDb.csproj"
+            "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.MemoryDb\\DDD.Infra.MemoryDb.csproj": {
+              "projectPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.MemoryDb\\DDD.Infra.MemoryDb.csproj"
             },
-            "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj": {
-              "projectPath": "C:\\bia\\DDD.Universidade\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj"
+            "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj": {
+              "projectPath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Infra.SQLServer\\DDD.Infra.SQLServer.csproj"
             }
           }
         }
