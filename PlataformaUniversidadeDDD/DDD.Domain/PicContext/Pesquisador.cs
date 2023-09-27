@@ -11,5 +11,6 @@ namespace DDD.Domain.PicContext
     {
         public string Titulacao { get; set; }
         public List<Projeto> Projetos { get; set; }
+
     }
 }
