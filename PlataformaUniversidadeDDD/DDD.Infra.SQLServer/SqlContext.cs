@@ -1,5 +1,4 @@
-using DDD.Domain.PicContext;
-using DDD.Domain.SecretariaContext;
+using DDD.Domain.EventosContext;
 using DDD.Domain.UserManagementContext;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,23 +18,20 @@ namespace DDD.Infra.SQLServer
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Entity<Matricula>().HasKey(m => new { m.AlunoId, m.DisciplinaId });
-            modelBuilder.Entity<Aluno>()
-                .HasMany(e => e.Disciplinas)
-                .WithMany(e => e.Alunos)
-                .UsingEntity<Matricula>();
+            modelBuilder.Entity<Comprador>()
+                .HasMany(e => e.Eventos)
+                .WithMany(e => e.Compradors)
+                .UsingEntity<Venda>();
 
 
             modelBuilder.Entity<User>().UseTpcMappingStrategy();
-            modelBuilder.Entity<Aluno>().ToTable("Aluno");
-            modelBuilder.Entity<Pesquisador>().ToTable("Pesquisador");
+            modelBuilder.Entity<Eventos>().ToTable("Evento");
             //https://learn.microsoft.com/pt-br/ef/core/modeling/inheritance
         }
 
-        public DbSet<Aluno> Alunos { get; set; }
-        public DbSet<Disciplina> Disciplinas { get; set; }
-        public DbSet<Matricula> Matriculas { get; set; }
+        public DbSet<Eventos> Eventos { get; set; }
+        public DbSet<Comprador> Compradors { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Pesquisador> Pesquisadores { get; set; }
-        public DbSet<Projeto> Projetos { get; set; }
     }
 }

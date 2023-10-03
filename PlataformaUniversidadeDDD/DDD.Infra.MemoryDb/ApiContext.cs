@@ -1,4 +1,4 @@
-using DDD.Domain.SecretariaContext;
+using DDD.Domain.EventosContext;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
@@ -10,7 +10,7 @@ namespace DDD.Infra.MemoryDb
         {
             optionsBuilder.UseInMemoryDatabase(databaseName: "UniversidadeDb");
         }
-        public DbSet<Aluno> Alunos { get; set; }
-        public DbSet<Disciplina> Disciplinas { get; set; }
+        public DbSet<Eventos> Evento { get; set; }
+        //public DbSet<Disciplina> Disciplinas { get; set; }
     }
 }

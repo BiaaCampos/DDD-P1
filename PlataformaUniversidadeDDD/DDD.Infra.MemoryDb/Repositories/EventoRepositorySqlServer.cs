@@ -1,5 +1,6 @@
-using DDD.Domain.SecretariaContext;
-using DDD.Infra.SQLServer.Interfaces;
+﻿using DDD.Domain.EventosContext;
+using DDD.Infra.MemoryDb.Interfaces;
+using DDD.Infra.SQLServer;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,23 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDD.Infra.SQLServer.Repositories
+namespace DDD.Infra.MemoryDb.Repositories
 {
-    public class AlunoRepositorySqlServer : IAlunoRepository
+    public class EventoRepositorySqlServer : IEventoRepository
     {
 
         private readonly SqlContext _context;
 
-        public AlunoRepositorySqlServer(SqlContext context)
+        public EventoRepositorySqlServer(SqlContext context)
         {
             _context = context;
         }
 
-        public void DeleteAluno(Aluno aluno)
+        public void DeleteEvento(Eventos evento)
         {
             try
             {
-                _context.Set<Aluno>().Remove(aluno);
+                _context.Set<Eventos>().Remove(evento);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -33,23 +34,23 @@ namespace DDD.Infra.SQLServer.Repositories
             }
         }
 
-        public Aluno GetAlunoById(int id)
+        public Eventos GetEventoById(int id)
         {
-            return _context.Alunos.Find(id);
+            return _context.Eventos.Find(id);
         }
 
-        public List<Aluno> GetAlunos()
+        public List<Eventos> GetEventos()
         {
-            //return  _context.Alunos.Include(x => x.Disciplinas).ToList();
-            return _context.Alunos.ToList();
+
+            return _context.Eventos.ToList();
 
         }
 
-        public void InsertAluno(Aluno aluno)
+        public void InsertEvento(Eventos evento)
         {
             try
             {
-                _context.Alunos.Add(aluno);
+                _context.Eventos.Add(evento);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -59,11 +60,11 @@ namespace DDD.Infra.SQLServer.Repositories
             }
         }
 
-        public void UpdateAluno(Aluno aluno)
+        public void UpdateEvento(Eventos evento)
         {
             try
             {
-                _context.Entry(aluno).State = EntityState.Modified;
+                _context.Entry(evento).State = EntityState.Modified;
                 _context.SaveChanges();
 
             }

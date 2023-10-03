@@ -1,29 +1,24 @@
-using DDD.Domain.SecretariaContext;
+﻿using DDD.Domain.EventosContext;
 using DDD.Infra.MemoryDb.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDD.Infra.MemoryDb.Repositories
 {
-    public class AlunoRepository : IAlunoRepository
+    public class EventoRepository : IEventoRepository
     {
 
         private readonly ApiContext _context;
 
-        public AlunoRepository(ApiContext context)
+        public EventoRepository(ApiContext context)
         {
             _context = context;
         }
-       
-        public void DeleteAluno(Aluno aluno)
+
+        public void DeleteEvento(Eventos evento)
         {
             try
             {
-                _context.Set<Aluno>().Remove(aluno);
+                _context.Set<Eventos>().Remove(evento);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -33,25 +28,25 @@ namespace DDD.Infra.MemoryDb.Repositories
             }
         }
 
-        public Aluno GetAlunoById(int id)
+        public Eventos GetEventoById(int IdEventos)
         {
-            return _context.Alunos.Find(id);
+            return _context.Eventos.Find(IdEventos);
         }
 
-        public List<Aluno> GetAlunos()
+        public List<Eventos> GetEventos()
         {
             using (var context = new ApiContext())
             {
-                var list = context.Alunos.ToList();
+                var list = context.Eventos.ToList();
                 return list;
             }
         }
 
-        public void InsertAluno(Aluno aluno)
+        public void InsertEvento(Eventos evento)
         {
             try
             {
-                _context.Alunos.Add(aluno);
+                _context.Eventos.Add(evento);
                 _context.SaveChanges();
             }
             catch (Exception ex)
@@ -61,11 +56,11 @@ namespace DDD.Infra.MemoryDb.Repositories
             }
         }
 
-        public void UpdateAluno(Aluno aluno)
+        public void UpdateEvento(Eventos evento)
         {
             try
             {
-                _context.Entry(aluno).State = EntityState.Modified;
+                _context.Entry(evento).State = EntityState.Modified;
                 _context.SaveChanges();
 
             }
