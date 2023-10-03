@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PeoopqbrdiupXosyPiB0kxuNEpZHOlURmlullbYWZdMU13EAX3xqL06vet706bTsITLafjSWXy49VRlc6a8I2A==",
+  "dgSpecHash": "Wtcez6Gi8/feyQ6HppyBBXySMaUcq35vm1dOhJwgEDpGYtq+bopiUHnqa2RdJ/T1liMrvQ+FaMtsrgLwSQyRJQ==",
   "success": true,
-  "projectFilePath": "C:\\bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
+  "projectFilePath": "C:\\Bia\\DDD-P1\\PlataformaUniversidadeDDD\\DDD.Application.Api\\DDD.Application.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aula\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Aula\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

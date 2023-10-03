@@ -1,3 +1,4 @@
+using DDD.Infra.MemoryDb.Interfaces;
 using DDD.Infra.SQLServer;
 using DDD.Infra.SQLServer.Interfaces;
 using DDD.Infra.SQLServer.Repositories;
@@ -9,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 //IOC - Dependency Injection
 //builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
-builder.Services.AddScoped<IAlunoRepository, AlunoRepositorySqlServer>();
-builder.Services.AddScoped<IDisciplinaRepository, DisciplinaRepositorySqlServer>();
+builder.Services.AddScoped<IEventoRepository, EventoRepositorySqlServer>();
+//builder.Services.AddScoped<IDisciplinaRepository, DisciplinaRepositorySqlServer>();
 builder.Services.AddScoped<IMatriculaRepository, MatriculaRepositorySqlServer>();
 builder.Services.AddScoped<SqlContext, SqlContext>();
 
