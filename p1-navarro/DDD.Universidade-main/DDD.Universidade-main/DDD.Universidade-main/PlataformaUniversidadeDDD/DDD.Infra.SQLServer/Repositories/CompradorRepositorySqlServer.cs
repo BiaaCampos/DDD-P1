@@ -1,0 +1,82 @@
+﻿using DDD.Domain.GeralContext;
+using DDD.Infra.SQLServer.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DDD.Infra.SQLServer.Repositories
+{
+    public class CompradorRepositorySqlServer : ICompradorRepository
+    {
+
+        private readonly SqlContext _context;
+
+        public CompradorRepositorySqlServer(SqlContext context)
+        {
+            _context = context;
+        }
+
+        public void DeleteComprador(Comprador comprador)
+        {
+            try
+            {
+                _context.Set<Comprador>().Remove(comprador);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<Comprador> GetComprador()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comprador GetCompradorById(int id)
+        {
+            return _context.Comprador.Find(id);
+        }
+
+        public List<Comprador> GetCompradors()
+        {
+            //return  _context.Compradors.Include(x => x.Disciplinas).ToList();
+            return _context.Comprador.ToList();
+
+        }
+
+        public void InsertComprador(Comprador comprador)
+        {
+            try
+            {
+                _context.Comprador.Add(comprador);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                //log exception
+
+            }
+        }
+
+        public void UpdateComprador(Comprador comprador)
+        {
+            try
+            {
+                _context.Entry(comprador).State = EntityState.Modified;
+                _context.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+    }
+}
