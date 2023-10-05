@@ -33,17 +33,12 @@ namespace DDD.Infra.SQLServer.Repositories
             }
         }
 
-        public List<Comprador> GetComprador()
-        {
-            throw new NotImplementedException();
-        }
-
         public Comprador GetCompradorById(int id)
         {
             return _context.Comprador.Find(id);
         }
 
-        public List<Comprador> GetCompradors()
+        public List<Comprador> GetComprador()
         {
             //return  _context.Compradors.Include(x => x.Disciplinas).ToList();
             return _context.Comprador.ToList();

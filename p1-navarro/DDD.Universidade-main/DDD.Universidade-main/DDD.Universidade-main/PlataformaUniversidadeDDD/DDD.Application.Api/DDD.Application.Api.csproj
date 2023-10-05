@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DDD.Infra.MemoryDb\DDD.Infra.MemoryDb.csproj" />
     <ProjectReference Include="..\DDD.Infra.SQLServer\DDD.Infra.SQLServer.csproj" />
   </ItemGroup>
 
