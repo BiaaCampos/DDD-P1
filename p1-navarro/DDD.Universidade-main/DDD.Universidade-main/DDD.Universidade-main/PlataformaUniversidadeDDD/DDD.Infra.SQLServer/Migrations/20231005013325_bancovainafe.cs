@@ -7,8 +7,8 @@ namespace DDD.Infra.SQLServer.Migrations
 {
     /// <inheritdoc />
     public partial class bancovainafe : Migration
-    {
-        /// <inheritdoc />
+    {//teste
+        /// <inheritdoc /> 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
