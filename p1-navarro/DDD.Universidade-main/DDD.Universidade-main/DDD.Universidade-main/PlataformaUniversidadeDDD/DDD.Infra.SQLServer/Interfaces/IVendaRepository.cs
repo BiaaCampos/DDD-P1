@@ -11,7 +11,7 @@ namespace DDD.Infra.SQLServer.Interfaces
     {
         public List<Venda> GetVendas();
         public Venda GetVendaById(int id);
-        public Venda InsertVenda(int IdEventos, int IdComprador);
+        public void InsertVenda(Venda venda);
         public void UpdateVenda(Venda venda);
         public void DeleteVenda(Venda venda);
     }

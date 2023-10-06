@@ -9,7 +9,6 @@ namespace DDD.Domain.GeralContext
 {
     public class Comprador : User
     {
-        //n
-        public IList<Eventos>? Eventos { get; set; }
+        public List<Eventos>? Eventos { get; set; }
     }
 }

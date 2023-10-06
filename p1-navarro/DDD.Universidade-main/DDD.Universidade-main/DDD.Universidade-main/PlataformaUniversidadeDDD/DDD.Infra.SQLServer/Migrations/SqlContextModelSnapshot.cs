@@ -22,20 +22,7 @@ namespace DDD.Infra.SQLServer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CompradorEventos", b =>
-                {
-                    b.Property<int>("CompradoresUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EventosIdEventos")
-                        .HasColumnType("int");
-
-                    b.HasKey("CompradoresUserId", "EventosIdEventos");
-
-                    b.HasIndex("EventosIdEventos");
-
-                    b.ToTable("CompradorEventos");
-                });
+            modelBuilder.HasSequence("UserSequence");
 
             modelBuilder.Entity("DDD.Domain.GeralContext.Eventos", b =>
                 {
@@ -71,7 +58,7 @@ namespace DDD.Infra.SQLServer.Migrations
 
                     b.HasKey("IdEventos");
 
-                    b.ToTable("Eventos");
+                    b.ToTable("Eventos", (string)null);
                 });
 
             modelBuilder.Entity("DDD.Domain.GeralContext.Venda", b =>
@@ -91,6 +78,12 @@ namespace DDD.Infra.SQLServer.Migrations
                     b.Property<int>("EventosIdEventos")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdComprador")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdEventos")
+                        .HasColumnType("int");
+
                     b.Property<int>("QtdIngresso")
                         .HasColumnType("int");
 
@@ -107,19 +100,16 @@ namespace DDD.Infra.SQLServer.Migrations
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasDefaultValueSql("NEXT VALUE FOR [UserSequence]");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+                    SqlServerPropertyBuilderExtensions.UseSequence(b.Property<int>("UserId"));
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -142,33 +132,16 @@ namespace DDD.Infra.SQLServer.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable((string)null);
 
-                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
-
-                    b.UseTphMappingStrategy();
+                    b.UseTpcMappingStrategy();
                 });
 
             modelBuilder.Entity("DDD.Domain.GeralContext.Comprador", b =>
                 {
                     b.HasBaseType("DDD.Domain.UserManagementContext.User");
 
-                    b.HasDiscriminator().HasValue("Comprador");
-                });
-
-            modelBuilder.Entity("CompradorEventos", b =>
-                {
-                    b.HasOne("DDD.Domain.GeralContext.Comprador", null)
-                        .WithMany()
-                        .HasForeignKey("CompradoresUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DDD.Domain.GeralContext.Eventos", null)
-                        .WithMany()
-                        .HasForeignKey("EventosIdEventos")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.ToTable("Comprador");
                 });
 
             modelBuilder.Entity("DDD.Domain.GeralContext.Venda", b =>

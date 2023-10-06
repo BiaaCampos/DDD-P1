@@ -1,5 +1,6 @@
 ﻿using DDD.Domain.GeralContext;
 using DDD.Infra.SQLServer.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,44 +26,24 @@ namespace DDD.Infra.SQLServer.Repositories
 
         public Venda GetVendaById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Venda.Find(id);
         }
 
         public List<Venda> GetVendas()
         {
-            throw new NotImplementedException();
+            return _context.Venda.ToList();
         }
 
-        public Venda InsertVenda(int IdEventos, int IdComprador)
+        public void InsertVenda(Venda venda)
         {
-            var comprador = _context.Comprador.First(i => i.UserId == IdComprador);
-            var eventos = _context.Eventos.First(i => i.IdEventos == IdEventos);
-
-            var venda = new Venda
-            {
-                Comprador = comprador,
-                Eventos = eventos
-            };
-
-            try
-            {
-
-                _context.Add(venda);
-                _context.SaveChanges();
-
-            }
-            catch (Exception ex)
-            {
-                var msg = ex.InnerException;
-                throw;
-            }
-
-            return venda;
+            _context.Venda.Add(venda);
+            _context.SaveChanges();
         }
 
         public void UpdateVenda(Venda venda)
         {
-            throw new NotImplementedException();
+            _context.Entry(venda).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

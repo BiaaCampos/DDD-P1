@@ -12,21 +12,21 @@ namespace DDD.Infra.SQLServer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=UniversidadeDb");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EventosDb");
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Eventos>()
-        //        .HasMany(e => e.Compradores)
-        //        .WithMany(e => e.Eventos)
-        //        .UsingEntity<Venda>();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Eventos>()
+                .HasMany(e => e.Compradores)
+                .WithMany(e => e.Eventos)
+                .UsingEntity<Venda>();
 
 
-        //    modelBuilder.Entity<User>().UseTpcMappingStrategy();
-        //    modelBuilder.Entity<Eventos>().ToTable("Eventos");
-        //    //https://learn.microsoft.com/pt-br/ef/core/modeling/inheritance
-        //}
+            modelBuilder.Entity<User>().UseTpcMappingStrategy();
+            modelBuilder.Entity<Eventos>().ToTable("Eventos");
+            //https://learn.microsoft.com/pt-br/ef/core/modeling/inheritance
+        }
 
         public DbSet<Eventos> Eventos { get; set; }
         public DbSet<Comprador> Comprador { get; set; }

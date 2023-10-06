@@ -10,9 +10,9 @@ namespace DDD.Domain.GeralContext
     public class Venda
     {
         public int VendaId { get; set; }
-
+        public int IdComprador { get; set; }
         public Comprador Comprador { get; set; }
-
+        public int IdEventos { get; set; }
         public Eventos Eventos { get; set; }
 
         public DateTime Data { get; set; }

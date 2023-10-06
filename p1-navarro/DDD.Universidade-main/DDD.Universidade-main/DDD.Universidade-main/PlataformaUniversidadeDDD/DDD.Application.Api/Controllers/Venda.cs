@@ -31,10 +31,9 @@ namespace DDD.Application.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<Venda> CreateVenda(int IdEventos, int UserId)
+        public ActionResult<Venda> CreateVenda(Venda venda)
         {
-            var vendaIdSaved = _vendaRepository.InsertVenda(IdEventos, UserId);
-            return CreatedAtAction(nameof(GetById), new { id = vendaIdSaved.VendaId }, vendaIdSaved);
+            return Ok(venda);
         }
 
     }
