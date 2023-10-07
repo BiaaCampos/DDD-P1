@@ -6,32 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DDD.Infra.SQLServer.Migrations
 {
     /// <inheritdoc />
-    public partial class teste6 : Migration
+    public partial class sadas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateSequence(
-                name: "UserSequence");
-
-            migrationBuilder.CreateTable(
-                name: "Comprador",
-                columns: table => new
-                {
-                    UserId = table.Column<int>(type: "int", nullable: false, defaultValueSql: "NEXT VALUE FOR [UserSequence]"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RA = table.Column<int>(type: "int", nullable: false),
-                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Ativo = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comprador", x => x.UserId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Eventos",
                 columns: table => new
@@ -52,43 +31,68 @@ namespace DDD.Infra.SQLServer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RA = table.Column<int>(type: "int", nullable: false),
+                    Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Venda",
                 columns: table => new
                 {
                     VendaId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdComprador = table.Column<int>(type: "int", nullable: false),
-                    CompradorUserId = table.Column<int>(type: "int", nullable: false),
                     IdEventos = table.Column<int>(type: "int", nullable: false),
-                    EventosIdEventos = table.Column<int>(type: "int", nullable: false),
                     Data = table.Column<DateTime>(type: "datetime2", nullable: false),
                     QtdIngresso = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Venda", x => x.VendaId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CompradorEventos",
+                columns: table => new
+                {
+                    CompradoresUserId = table.Column<int>(type: "int", nullable: false),
+                    EventosIdEventos = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CompradorEventos", x => new { x.CompradoresUserId, x.EventosIdEventos });
                     table.ForeignKey(
-                        name: "FK_Venda_Comprador_CompradorUserId",
-                        column: x => x.CompradorUserId,
-                        principalTable: "Comprador",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Venda_Eventos_EventosIdEventos",
+                        name: "FK_CompradorEventos_Eventos_EventosIdEventos",
                         column: x => x.EventosIdEventos,
                         principalTable: "Eventos",
                         principalColumn: "IdEventos",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompradorEventos_Users_CompradoresUserId",
+                        column: x => x.CompradoresUserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Venda_CompradorUserId",
-                table: "Venda",
-                column: "CompradorUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Venda_EventosIdEventos",
-                table: "Venda",
+                name: "IX_CompradorEventos_EventosIdEventos",
+                table: "CompradorEventos",
                 column: "EventosIdEventos");
         }
 
@@ -96,16 +100,16 @@ namespace DDD.Infra.SQLServer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Venda");
+                name: "CompradorEventos");
 
             migrationBuilder.DropTable(
-                name: "Comprador");
+                name: "Venda");
 
             migrationBuilder.DropTable(
                 name: "Eventos");
 
-            migrationBuilder.DropSequence(
-                name: "UserSequence");
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

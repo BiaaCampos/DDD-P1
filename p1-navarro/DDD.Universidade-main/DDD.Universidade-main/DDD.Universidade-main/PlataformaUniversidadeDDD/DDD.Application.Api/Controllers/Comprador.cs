@@ -55,7 +55,6 @@ namespace DDD.Application.Api.Controllers
                 throw;
             }
         }
-
         // DELETE api/values/5
         [HttpDelete()]
         public ActionResult Delete([FromBody] Comprador comprador)

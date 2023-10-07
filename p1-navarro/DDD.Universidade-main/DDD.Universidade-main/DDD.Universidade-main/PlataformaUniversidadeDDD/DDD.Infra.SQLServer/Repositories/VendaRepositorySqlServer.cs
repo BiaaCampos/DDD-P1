@@ -36,8 +36,16 @@ namespace DDD.Infra.SQLServer.Repositories
 
         public void InsertVenda(Venda venda)
         {
-            _context.Venda.Add(venda);
-            _context.SaveChanges();
+            try
+            {
+                _context.Venda.Add(venda);
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                //log exception
+
+            }
         }
 
         public void UpdateVenda(Venda venda)

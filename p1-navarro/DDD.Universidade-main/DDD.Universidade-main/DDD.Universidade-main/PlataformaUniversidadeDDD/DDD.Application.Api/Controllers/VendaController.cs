@@ -7,11 +7,11 @@ namespace DDD.Application.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Venda : ControllerBase
+    public class VendaController : ControllerBase
     {
         readonly IVendaRepository _vendaRepository;
 
-        public Venda(IVendaRepository vendaRepository)
+        public VendaController(IVendaRepository vendaRepository)
         {
             _vendaRepository = vendaRepository;
         }
@@ -23,7 +23,7 @@ namespace DDD.Application.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Eventos> GetById(int id)
+        public ActionResult<Venda> GetById(int id)
         {
             return Ok(_vendaRepository.GetVendaById(id));
         }
@@ -33,7 +33,10 @@ namespace DDD.Application.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<Venda> CreateVenda(Venda venda)
         {
-            return Ok(venda);
+            //if (venda == null)
+            //    return BadRequest("Venda nao realizada");
+            _vendaRepository.InsertVenda(venda);
+            return CreatedAtAction(nameof(GetById), new { id = venda.VendaId }, venda);
         }
 
     }

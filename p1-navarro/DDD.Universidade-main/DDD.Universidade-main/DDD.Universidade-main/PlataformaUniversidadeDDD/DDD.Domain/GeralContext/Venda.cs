@@ -11,10 +11,10 @@ namespace DDD.Domain.GeralContext
     {
         public int VendaId { get; set; }
         public int IdComprador { get; set; }
-        public Comprador Comprador { get; set; }
+        //public Comprador Comprador { get; set; }
+        
         public int IdEventos { get; set; }
-        public Eventos Eventos { get; set; }
-
+        //public List<Eventos>? Eventos { get; set; }
         public DateTime Data { get; set; }
 
         public int QtdIngresso { get; set; }
